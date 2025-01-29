@@ -35,7 +35,7 @@ A web-based legal document processing system using custom-built Small Language M
 ### **Frontend (React.js)**
 - **Material-UI components**
 - **Document viewer/editor**
-- **Interactive dashboard**
+	- **Interactive dashboard**
 - **Real-time processing feedback**
 
 ### **Backend (FastAPI)**
