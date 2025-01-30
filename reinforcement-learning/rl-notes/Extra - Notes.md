@@ -56,4 +56,3 @@
     - $R$: Reward for action $a$ in state $s$.
     - $\gamma$: Discount factor.
     - $\max_{a'} Q(s', a')$: Maximum Q-value for the next state $s'$.
-
