@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>RL - My Notes</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Notes</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">RL</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#machine-learning-types" class="nav-link">Machine Learning Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#how-rl-differs-from-supervised-learning" class="nav-link">How RL Differs from Supervised Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#elements-of-rl" class="nav-link">Elements of RL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#advantages-of-reinforcement-learning" class="nav-link">Advantages of Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#disadvantages-of-reinforcement-learning" class="nav-link">Disadvantages of Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#rl-algorithm-steps" class="nav-link">RL Algorithm Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#learning-and-planning" class="nav-link">Learning and Planning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#model-of-the-environment" class="nav-link">Model of the Environment:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#types-of-reinforcement-learning-algorithms-on-the-basis-of-model-based" class="nav-link">Types of Reinforcement Learning Algorithms ( on the basis of model based)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#key-differences-between-model-free-and-model-based-reinforcement-learning" class="nav-link">Key Differences Between Model-free and Model-based Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#rl-framework-the-rl-process-a-loop-of-state-action-reward-and-next-state" class="nav-link">RL Framework - The RL Process: A Loop of State, Action, Reward, and Next State</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#main-characteristics-of-rl" class="nav-link">Main Characteristics of RL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#reinforcement-learning-rl-problem-challenges-in-rl" class="nav-link">Reinforcement Learning (RL) Problem - Challenges in RL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#fundamental-components-of-rl" class="nav-link">Fundamental Components of RL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#final-element-of-rl-systems-model-of-the-environment" class="nav-link">Final Element of RL Systems: Model of the Environment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#types-of-reinforcement-learning" class="nav-link">Types of Reinforcement Learning</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#value-based-reinforcement-learning" class="nav-link">Value-Based Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#policy-based-reinforcement-learning" class="nav-link">Policy-Based Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#model-based-reinforcement-learning_1" class="nav-link">Model-Based Reinforcement Learning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="machine-learning-types">Machine Learning Types</h2>
+<pre><code class="language-mermaid">graph LR
+    subgraph Input
+    A[Data with Labels] --&gt; B[Supervised Learning]
+    C[Data without Labels] --&gt; D[Unsupervised Learning]
+    E[States + Actions] --&gt; F[Reinforcement Learning]
+    end
+
+    B --&gt; G[Mapping]
+    D --&gt; H[Classes]
+    F --&gt; I[Action]
+
+    B -.-&gt;|Error| B
+    F -.-&gt;|Reward| F
+
+
+</code></pre>
+<h4 id="supervised-learning">Supervised Learning</h4>
+<ul>
+<li><strong>Input</strong>: Labeled data (features + target labels)</li>
+<li><strong>Process</strong>: Learning from labeled examples</li>
+<li><strong>Output</strong>: Prediction model</li>
+<li><strong>Feedback</strong>: Error measurement against known labels</li>
+<li><strong>Applications</strong>: </li>
+<li>Classification (spam detection, image recognition)</li>
+<li>Regression (price prediction, sales forecasting)</li>
+</ul>
+<h4 id="unsupervised-learning">Unsupervised Learning</h4>
+<ul>
+<li><strong>Input</strong>: Unlabeled data</li>
+<li><strong>Process</strong>: Pattern/structure discovery</li>
+<li><strong>Output</strong>: Data grouping/structure</li>
+<li><strong>Feedback</strong>: Internal validation metrics</li>
+<li><strong>Applications</strong>:</li>
+<li>Clustering (customer segmentation)</li>
+<li>Dimensionality reduction (feature extraction)</li>
+</ul>
+<h4 id="reinforcement-learning">Reinforcement Learning</h4>
+<ul>
+<li><strong>Input</strong>: States + possible actions</li>
+<li><strong>Process</strong>: Trial and error learning</li>
+<li><strong>Output</strong>: Action policy</li>
+<li><strong>Feedback</strong>: Rewards/penalties</li>
+<li><strong>Applications</strong>:</li>
+<li>Game AI (chess, Go)</li>
+<li>Robotics (navigation, control)</li>
+</ul>
+<h5 id="common-algorithms">Common Algorithms</h5>
+<ul>
+<li><strong>Supervised</strong>: Linear Regression, Random Forest, Neural Networks</li>
+<li><strong>Unsupervised</strong>: K-means, PCA, Autoencoders</li>
+<li><strong>Reinforcement</strong>: Q-Learning, Policy Gradient, DQN</li>
+</ul>
+<hr />
+<h4 id="reinforcement-learning_1">Reinforcement Learning:</h4>
+<ul>
+<li><strong>What to do</strong></li>
+<li><strong>How to map situations to actions</strong></li>
+<li><strong>Maximizing a numerical reward signal</strong></li>
+</ul>
+<p><strong>Reinforcement learning</strong> is an autonomous, self-teaching system that essentially learns by trial and error. It performs actions with the aim of maximizing rewards, or in other words, it is learning by doing in order to achieve the best outcomes.</p>
+<p><strong>Reinforcement Learning</strong> is a feedback-based Machine learning technique in which an agent
+learns to behave in an environment by performing the actions and seeing the results of
+actions. For each good action, the agent gets positive feedback, and for each bad action, the
+agent gets negative feedback or penalty</p>
+<h3 id="key-characteristics">Key Characteristics</h3>
+<p>Reinforcement Learning is inspired by how <strong>humans and animals</strong> learn through interactions:</p>
+<ul>
+<li><strong>Reward and Punishment</strong>: Encourages repeating actions that lead to rewards and avoiding punishments.</li>
+<li><strong>Trial and Error</strong>: Similar to trying different methods until the correct one is found.</li>
+<li><strong>Learning Over Time</strong>: Improvement occurs through continuous experience.</li>
+<li>
+<p><strong>Rewards Come from a Sequence of Actions</strong>.</p>
+</li>
+<li>
+<p>The learner is <strong>not told</strong> which actions to take but must <strong>discover</strong> them through trial and error.</p>
+</li>
+<li>Actions affect not only the <strong>immediate reward</strong> but also <strong>future situations and rewards</strong>.</li>
+<li>Works well in problems where a <strong>sequence of decisions</strong> is important.</li>
+</ul>
+<p>RL is an <strong>autonomous, self-teaching</strong> system that learns by <strong>trial and error</strong>.
+The goal is to <strong>maximize rewards</strong> over time.</p>
+<p><strong>Example Applications</strong>:
+    - Chess
+    - Maze solving
+    - Industrial robot arms
+    - Path planning
+    - Sweeper robots</p>
+<h2 id="how-rl-differs-from-supervised-learning">How RL Differs from Supervised Learning</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Supervised Learning</th>
+<th>Reinforcement Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Data</strong></td>
+<td>Has labeled answers</td>
+<td>No labeled answers; learns from experience</td>
+</tr>
+<tr>
+<td><strong>Decision Making</strong></td>
+<td>Independent of past decisions</td>
+<td>Dependent on past decisions</td>
+</tr>
+<tr>
+<td><strong>Learning Method</strong></td>
+<td>Trained with a dataset</td>
+<td>Learns through trial and error</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="elements-of-rl">Elements of RL</h2>
+<p>![[Pasted image 20250131000424.png|500]]</p>
+<h4 id="agent">Agent</h4>
+<ul>
+<li><strong>Definition</strong>: An entity that interacts with the environment.</li>
+<li><strong>Examples</strong>: Robot, human, software program.</li>
+</ul>
+<h4 id="environment">Environment</h4>
+<ul>
+<li><strong>Definition</strong>: The external system in which the agent operates.</li>
+<li><strong>Examples</strong>: Physical world, game simulation.</li>
+</ul>
+<h4 id="learning-process">Learning Process</h4>
+<ol>
+<li>The agent moves from the <strong>initial state</strong> to the <strong>goal state</strong>.</li>
+<li>The agent continually asks, <em>"What is the best action in each state?"</em></li>
+</ol>
+<hr />
+<h2 id="advantages-of-reinforcement-learning">Advantages of Reinforcement Learning</h2>
+<p>✅ No need for predefined instructions or human intervention. 
+✅ Can adapt to <strong>both static and dynamic environments</strong>. 
+✅ Solves a <strong>wide range of problems</strong> (decision-making, prediction, optimization). 
+✅ Improves with <strong>experience</strong> and fine-tunes over time.</p>
+<h2 id="disadvantages-of-reinforcement-learning">Disadvantages of Reinforcement Learning</h2>
+<p>❌ Performance depends on the <strong>quality of the reward function</strong>. 
+❌ <strong>Designing and tuning</strong> RL models can be <strong>complex</strong>.</p>
+<hr />
+<blockquote>
+<p>[!NOTE]</p>
+<h6 id="when-to-apply-reinforcement-learning">When to Apply Reinforcement Learning?</h6>
+<p>Reinforcement Learning is most suitable when:
+- The problem environment is <strong>complex and uncertain</strong>, making traditional programming methods ineffective.
+- Feedback is <strong>sparse, delayed, and dependent</strong> on multiple decisions.
+- Decision-making (actions) follows a <strong>feedback loop</strong>.</p>
+<h6 id="why-is-reinforcement-learning-difficult">Why Is Reinforcement Learning Difficult?</h6>
+<p>The toughest parts of Reinforcement Learning are:
+- <strong>Mapping the Environment</strong>.
+- <strong>Including All Possible Actions</strong>.</p>
+<h6 id="core-concepts">Core Concepts</h6>
+<ul>
+<li><strong>Goal-Oriented Learning</strong>: The agent learns by trying to achieve a goal.</li>
+<li><strong>Learning from Consequences</strong>: The agent learns from the consequences of its actions.</li>
+<li><strong>Active Research Area</strong>: RL is one of the most <strong>active</strong> fields in Artificial Intelligence (AI).</li>
+</ul>
+</blockquote>
+<h2 id="rl-algorithm-steps">RL Algorithm Steps</h2>
+<pre><code class="language-mermaid">graph TD;
+    A[Agent Observes Environment] --&gt; B[Agent Performs Action];
+    B --&gt; C[Agent Moves to New State];
+    C --&gt; D[Agent Receives Reward];
+    D --&gt; E[Agent Evaluates Action - Good or Bad];
+    E --&gt; F[Agent Adjusts Strategy to Maximize Reward];
+
+
+</code></pre>
+<hr />
+<h2 id="learning-and-planning">Learning and Planning</h2>
+<h4 id="two-fundamental-problems-in-sequential-decision-making">Two Fundamental Problems in Sequential Decision Making</h4>
+<h5 id="reinforcement-learning-rl">Reinforcement Learning (RL):</h5>
+<ul>
+<li>The environment is initially unknown.</li>
+<li>The agent interacts with the environment.<ul>
+<li>The agent improves its policy.</li>
+</ul>
+</li>
+</ul>
+<h5 id="planning">Planning:</h5>
+<ul>
+<li>A model of the environment is known.</li>
+<li>The agent performs computations with its model (without any external interaction).</li>
+<li>The agent improves its policy, also known as <strong>deliberation, reasoning, introspection, pondering, thought, search</strong>.</li>
+</ul>
+<hr />
+<h2 id="model-of-the-environment">Model of the Environment:</h2>
+<ul>
+<li>A <strong>model</strong> mimics the behavior of the environment. With the help of the model, one can make inferences about how the environment will behave. For example, if a state and an action are given, the model can predict the next state and reward.</li>
+<li>The model is used for <strong>planning</strong>, providing a way to take a course of action by considering all future situations before actually experiencing those situations.</li>
+<li>Approaches for solving RL problems with the help of the model are termed <strong>model-based approach</strong>.</li>
+<li>An approach without using a model is called a <strong>model-free approach</strong>.</li>
+</ul>
+<hr />
+<p>![[Pasted image 20250130232904.png]]</p>
+<h2 id="types-of-reinforcement-learning-algorithms-on-the-basis-of-model-based">Types of Reinforcement Learning Algorithms ( on the basis of model based)</h2>
+<p>There are various algorithms used in reinforcement learning such as Q-learning, policy gradient
+methods, Monte Carlo method and many more. All these algorithms can be classified into two broad categories - </p>
+<h4 id="model-free-reinforcement-learning">Model-free Reinforcement Learning :</h4>
+<ul>
+<li>It is a category of reinforcement learning algorithms that learns to make decisions by</li>
+<li>interacting with the environment directly, without creating a model of the environment's</li>
+<li>dynamics.</li>
+<li>The agent performs different actions multiple times to learn the outcomes and creates a</li>
+<li>strategy (policy) that optimizes its reward points. This is ideal for changing, large or complex</li>
+<li>environments.</li>
+<li>Not applicable for some scenario like self driving car.</li>
+</ul>
+<h4 id="model-based-reinforcement-learning">Model-based Reinforcement Learning:</h4>
+<ul>
+<li>This category of reinforcement learning algorithms involves creating a <strong>model of the environment's dynamics</strong> to make decisions and improve performance.</li>
+<li>Ideal for environments that are <strong>static and well-defined</strong>, where real-world environment testing is difficult.</li>
+</ul>
+<hr />
+<h2 id="key-differences-between-model-free-and-model-based-reinforcement-learning">Key Differences Between Model-free and Model-based Reinforcement Learning</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><strong>Model-Free RL</strong></th>
+<th><strong>Model-Based RL</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Learning Approach</strong></td>
+<td>Direct learning from environment</td>
+<td>Indirect learning through model building</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Requires more real-world interactions</td>
+<td>More sample-efficient</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Simpler implementation</td>
+<td>More complex due to model learning</td>
+</tr>
+<tr>
+<td><strong>Environment Utilization</strong></td>
+<td>No internal model</td>
+<td>Builds and uses a model</td>
+</tr>
+<tr>
+<td><strong>Adaptability</strong></td>
+<td>Slower to adapt to changes</td>
+<td>Faster adaptation with accurate model</td>
+</tr>
+<tr>
+<td><strong>Computational Requirements</strong></td>
+<td>Less intensive</td>
+<td>More computational resources needed</td>
+</tr>
+<tr>
+<td><strong>Examples</strong></td>
+<td>Q-Learning, SARSA, DQN, PPO</td>
+<td>Dyna-Q, Model-Based Value Iteration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="rl-framework-the-rl-process-a-loop-of-state-action-reward-and-next-state">RL Framework - The RL Process: A Loop of State, Action, Reward, and Next State</h2>
+<p>![[Pasted image 20250130232937.png]]</p>
+<hr />
+<h2 id="main-characteristics-of-rl">Main Characteristics of RL</h2>
+<ul>
+<li><strong>No supervisor</strong> while training.</li>
+<li><strong>Environment</strong> is generally stochastic for real-world applications.</li>
+<li><strong>Model of the environment</strong> can be incomplete.</li>
+<li><strong>Feedback</strong> (Negative/Positive Reward) can be delayed or partial.</li>
+<li>The agent uses experience from the past to improve its performance over time.</li>
+<li>Actions that have fetched more rewards are preferred.</li>
+<li>The agent tries various actions and prefers those that are best or have fetched more rewards.</li>
+<li>RL uses <strong>Markov Decision Process (MDP)</strong> framework to define the interaction between a learning agent and its environment.</li>
+</ul>
+<hr />
+<h2 id="reinforcement-learning-rl-problem-challenges-in-rl">Reinforcement Learning (RL) Problem - Challenges in RL</h2>
+<h3 id="trade-off-between-exploration-and-exploitation">Trade-off between Exploration and Exploitation:</h3>
+<ul>
+<li>To obtain rewards, an RL agent must prefer actions that it has tried in the past and found effective (<strong>Exploit</strong>).</li>
+<li>However, to discover such actions, it must try actions it has not selected before (<strong>Explore</strong>).</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+Neither exploration nor exploitation can be pursued exclusively without failing at the task.
+</p>
+</blockquote>
+<hr />
+<h2 id="fundamental-components-of-rl">Fundamental Components of RL</h2>
+<ul>
+<li><strong>Policy</strong>: Defines the agent’s behavior.</li>
+<li><strong>Reward Function</strong>: Provides feedback on actions.</li>
+<li><strong>Value Function</strong>: Evaluates future rewards.</li>
+<li><strong>Model of the Environment</strong>: Simulates how the environment works.</li>
+</ul>
+<h5 id="policy">Policy:</h5>
+<p>A <strong>policy</strong> is a strategy or set of rules that defines the actions the agent should take in a given state.</p>
+<ul>
+<li>The policy can be deterministic (one action for a state) or stochastic (probabilistic actions for a state).</li>
+<li>The <strong>goal</strong> is to find an optimal policy that maximizes the total expected reward.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>A robot navigating a maze may follow a policy that says, "Always turn left unless there's an obstacle, then turn right."</li>
+</ul>
+<h6 id="human-analogy">Human Analogy:</h6>
+<ul>
+<li>A <strong>policy</strong> is like a person's <strong>habit or plan of action</strong>, such as the decision to exercise every morning or take an umbrella when it's cloudy.</li>
+</ul>
+<h4 id="value-function">Value function:</h4>
+<p>Roughly speaking, the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state. 
+- Rewards determine the <strong>immediate, intrinsic desirability</strong> of environmental states. 
+- Values indicate the <strong>long-term desirability</strong> of states after considering the states likely to follow and the rewards available in those states. 
+- <strong>Example</strong>: - A state might always yield a low immediate reward but still have a <strong>high value</strong> because it is followed by states that yield high rewards. </p>
+<h4 id="human-analog">Human Analog</h4>
+<ul>
+<li>Rewards are somewhat like kepleasureur (if high) and ndpainai (if low). - Values correspond to a more rerefined and farsighted judgmenten of how pleased or displeased we are by the environment.nt.</li>
+</ul>
+<h5 id="reward-function">Reward Function:</h5>
+<p>The <strong>reward function</strong> provides feedback on the actions the agent takes, indicating whether an action was good or bad.</p>
+<ul>
+<li>It assigns a <strong>numeric value</strong> to the agent's actions, which the agent uses to evaluate the desirability of its actions in a given state.</li>
+<li>The goal of the agent is to maximize the cumulative reward over time.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>In a game, winning a round might give a reward of +10, while losing gives a reward of -1.</li>
+</ul>
+<h6 id="human-analogy_1">Human Analogy:</h6>
+<ul>
+<li>The <strong>reward function</strong> is like the <strong>feedback</strong> a person gets from their actions, such as feeling <strong>happy</strong> after a good deed or <strong>guilty</strong> after a mistake.</li>
+</ul>
+<h5 id="model-of-the-environment_1">Model of the Environment:</h5>
+<p>The <strong>model of the environment</strong> simulates how the environment behaves, helping the agent predict the outcomes of actions.</p>
+<ul>
+<li>This model can be used for <strong>planning</strong> future actions by simulating potential outcomes.</li>
+<li>A model-free approach directly learns from experience, while a model-based approach uses a model to predict actions' results before performing them.</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>A self-driving car may use a model to simulate various driving scenarios and plan its route accordingly.</li>
+</ul>
+<h5 id="human-analogy_2">Human Analogy:</h5>
+<ul>
+<li>The <strong>model of the environment</strong> is like a <strong>mental map</strong> that a person forms, which helps them predict the likely outcomes of their actions, such as deciding to avoid a route with heavy traffic.</li>
+</ul>
+<hr />
+<h2 id="final-element-of-rl-systems-model-of-the-environment">Final Element of RL Systems: <strong>Model of the Environment</strong></h2>
+<ul>
+<li>The model <strong>mimics the behavior of the environment</strong>, allowing inferences to be made about how the environment will behave.</li>
+<li>For example, given a state and action, the model might predict the resultant next state and next reward.</li>
+<li>
+<p><strong>Models</strong> are used for <strong>planning</strong>, helping the agent decide on a course of action by considering future situations before they are experienced.</p>
+</li>
+<li>
+<p>Methods for solving RL problems that use models and planning are called <strong>model-based methods</strong>, while simpler trial-and-error learning methods are called <strong>model-free methods</strong>.</p>
+</li>
+</ul>
+<hr />
+<h1 id="types-of-reinforcement-learning">Types of Reinforcement Learning</h1>
+<p>There are three main types of Reinforcement Learning (RL):
+- <strong>Value-Based</strong>
+- <strong>Policy-Based</strong>
+- <strong>Model-Based</strong></p>
+<p>Each approach has its own strengths and weaknesses, and the choice of algorithm will depend on the specific problem you are trying to solve.</p>
+<hr />
+<h2 id="value-based-reinforcement-learning">Value-Based Reinforcement Learning</h2>
+<ul>
+<li>In this approach, the agent learns to estimate the value of each state or action based on the rewards it receives.</li>
+<li>This value is known as <strong>Q-values</strong>.</li>
+<li>The agent then selects the actions with the highest Q-value in each state to maximize its long-term reward.</li>
+<li>The most commonly used algorithm for value-based reinforcement learning is <strong>Q-learning</strong>.</li>
+</ul>
+<hr />
+<h2 id="policy-based-reinforcement-learning">Policy-Based Reinforcement Learning</h2>
+<ul>
+<li>In this approach, the agent learns an optimal policy, which is a mapping from states to actions, without calculating the value function.</li>
+<li>The policy is updated based on the rewards received by the agent, with the goal of maximizing the expected reward over time.</li>
+<li>The most common algorithm used for policy-based reinforcement learning is the <strong>REINFORCE</strong> algorithm.</li>
+</ul>
+<hr />
+<h2 id="model-based-reinforcement-learning_1">Model-Based Reinforcement Learning</h2>
+<ul>
+<li>In this approach, the agent learns a model of the environment, which it can use to simulate different scenarios and plan its actions accordingly.</li>
+<li>The model can learn through supervised or unsupervised learning, and the agent can use it to predict the outcome of its actions before taking them.</li>
+<li>The most common model-based reinforcement learning algorithm is the <strong>Dyna</strong> algorithm.</li>
+</ul>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
