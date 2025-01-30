@@ -1,0 +1,6 @@
+site_name: My Notes
+
+
+nav:
+  - Home: index.md
+  - RL: Lecture Notes - Unit 1.md
