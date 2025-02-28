@@ -1,22 +1,6 @@
 ## Machine Learning Types
 
-``` mermaid
-graph LR
-    subgraph Input
-    A[Data with Labels] --> B[Supervised Learning]
-    C[Data without Labels] --> D[Unsupervised Learning]
-    E[States + Actions] --> F[Reinforcement Learning]
-    end
-
-    B --> G[Mapping]
-    D --> H[Classes]
-    F --> I[Action]
-
-    B -.->|Error| B
-    F -.->|Reward| F
-
-
-```
+![[Pasted image 20250131132955.png]]
 #### Supervised Learning
 - **Input**: Labeled data (features + target labels)
 - **Process**: Learning from labeled examples
@@ -271,9 +255,8 @@ A **policy** is a strategy or set of rules that defines the actions the agent sh
 
 - A robot navigating a maze may follow a policy that says, "Always turn left unless there's an obstacle, then turn right."
 
-###### Human Analogy:
-
-- A **policy** is like a person's **habit or plan of action**, such as the decision to exercise every morning or take an umbrella when it's cloudy.
+> [! Human Analogy]
+> - A **policy** is like a person's **habit or plan of action**, such as the decision to exercise every morning or take an umbrella when it's cloudy.
 
 
 #### Value function: 
@@ -281,8 +264,9 @@ Roughly speaking, the value of a state is the total amount of reward an agent ca
 - Rewards determine the **immediate, intrinsic desirability** of environmental states. 
 - Values indicate the **long-term desirability** of states after considering the states likely to follow and the rewards available in those states. 
 - **Example**: - A state might always yield a low immediate reward but still have a **high value** because it is followed by states that yield high rewards. 
-#### Human Analog
-- Rewards are somewhat like kepleasureur (if high) and ndpainai (if low). - Values correspond to a more rerefined and farsighted judgmenten of how pleased or displeased we are by the environment.nt.
+
+> [! Human Analogy]
+> -  Rewards are somewhat like **pleasure** (if high) and **pain** (if low). - Values correspond to a more **refined and farsighted judgment** of how pleased or displeased we are by the environment.
 ##### Reward Function:
 
 The **reward function** provides feedback on the actions the agent takes, indicating whether an action was good or bad.
@@ -294,9 +278,8 @@ The **reward function** provides feedback on the actions the agent takes, indica
 
 - In a game, winning a round might give a reward of +10, while losing gives a reward of -1.
 
-###### Human Analogy:
-
-- The **reward function** is like the **feedback** a person gets from their actions, such as feeling **happy** after a good deed or **guilty** after a mistake.
+> [! Human Analogy]
+> - The **reward function** is like the **feedback** a person gets from their actions, such as feeling **happy** after a good deed or **guilty** after a mistake.
 
 
 ##### Model of the Environment:
@@ -310,17 +293,9 @@ The **model of the environment** simulates how the environment behaves, helping 
 
 - A self-driving car may use a model to simulate various driving scenarios and plan its route accordingly.
 
-##### Human Analogy:
-
-- The **model of the environment** is like a **mental map** that a person forms, which helps them predict the likely outcomes of their actions, such as deciding to avoid a route with heavy traffic.
-
----
-## Final Element of RL Systems: **Model of the Environment**
-- The model **mimics the behavior of the environment**, allowing inferences to be made about how the environment will behave.
-  - For example, given a state and action, the model might predict the resultant next state and next reward.
-- **Models** are used for **planning**, helping the agent decide on a course of action by considering future situations before they are experienced.
-
-- Methods for solving RL problems that use models and planning are called **model-based methods**, while simpler trial-and-error learning methods are called **model-free methods**.
+> [! Human Analogy]
+> 
+> - The **model of the environment** is like a **mental map** that a person forms, which helps them predict the likely outcomes of their actions, such as deciding to avoid a route with heavy traffic.
 
 ---
 # Types of Reinforcement Learning
@@ -359,50 +334,240 @@ Each approach has its own strengths and weaknesses, and the choice of algorithm 
 
 ---
 
+## **Formal Presentation of RL Fundamentals**
+
+### 1. State ($s$) and Action ($a$)
+
+- **Current state**: $s_t$
+- **Next state**: $s_{t+1}$
+- **Action**: $a$, an action performed by the agent to move from state $s_t$ to $s_{t+1}$.
+- **State space**: The set of all possible states the agent can be in.
+
+### 2. Reward ($r$ or $R(s, a)$)
+
+- The result of taking action $a$ at state $s$.
+- Actions affect not only the **immediate reward** but also the **next states** and all **subsequent rewards**.
+
+### 3. Episode
+
+- A sequence of states and actions until reaching a terminal state.
+
+### 4. Transition Probability ($P(s' | s, a)$)
+
+- The probability of reaching state $s'$ when taking action $a$ at state $s_t$.
+
+### 5. Policy ($\pi(s, a)$)
+
+- A mapping of each state to an action, determining how the agent acts at each state.
+- **Types of Policies**:
+    - **Deterministic**: Always selects the same action for a given state.
+    - **Stochastic**: Selects actions based on probability distribution.
+    - $\pi(a | s) = P(A_t = a | S_t = s)$.
+
+### 6. Return ($G_t$)
+
+- The total future reward from state $s_t$.
+- $Gt=rt+γrt+1+γ2rt+2+⋯+γT−1rTG_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots + \gamma^{T-1} r_T$
+- **Discount factor ($\gamma$)**:
+    - Determines the importance of future rewards.
+    - **Higher $\gamma$** → more focus on long-term rewards.
+    - **Lower $\gamma$** → more focus on immediate rewards.
+
+### 7. Value Function ($V(s)$)
+
+- The expected return from starting at state $s$.
+- Also called the **State-Value Function**:  
+$V(s)=E[Gt∣st=s]=E[rt+γrt+1+γ2rt+2+⋯+γT−1rT∣st=s]V(s) = \mathbb{E}[G_t | s_t = s] = \mathbb{E} \left[ r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots + \gamma^{T-1} r_T \mid s_t = s \right]$
+- **Breakdown**:
+    - **Immediate reward**: $r_t$.
+    - **Discounted value of successor states**.
+    - Represents the **long-term desirability** of state $s$.
+
+### 8. Optimal Policy ($\pi^*(s)$)
+
+- The best possible policy for a given state, maximizing expected future rewards.
+
+### 9. Optimal Value Functions
+
+- **Optimal State-Value Function**:
+    - Maximum value function over all policies:  
+        $V∗(s)=max⁡πVπ(s)V^*(s) = \max_{\pi} V_{\pi}(s)$
+- **Optimal Action-Value Function ($Q^*(s, a)$)**:
+    - Maximum action-value function over all policies:  
+        $Q∗(s,a)=max⁡πQπ(s,a)Q^*(s, a) = \max_{\pi} Q_{\pi}(s, a)$
+    - Represents the **best possible expected return** for taking action $a$ in state $s$.
 
 
+### **Two Fundamental Tasks of Reinforcement Learning**
 
+#### 1. Prediction Task
 
+- We have a policy:
+    - The goal is to evaluate the policy by estimating the **state-value** or **Q-value** of running actions within a given policy.
+    - **Evaluate the future**.
 
+#### 2. Control Task
 
+- We don't know the policy, and the goal is:
+    - To find the **optimal policy** aiming to collect maximum rewards.
+    - **Optimize the future**.
 
+---
 
+### Tabular Solution Methods
 
+#### Core Idea
 
+- In their simplest form, **RL algorithms** assume that the **state and action spaces** are small enough for approximate **value functions** to be represented as **arrays or tables**.
+- These methods can often find **exact solutions** (i.e., optimal value function and optimal policy).
 
+#### Fundamental Classes of Methods for Solving Finite MDPs
 
+1. **Dynamic Programming (DP)**
+    
+    - Requires a **complete and accurate model** of the environment.
+    - Mathematically well-developed.
+2. **Monte Carlo Methods**
+    
+    - No model required and conceptually simple.
+    - Not well suited for step-by-step incremental computation.
+3. **Temporal Difference (TD) Learning**
+    
+    - Requires no model and is fully incremental.
+    - More complex to analyze but efficient.
+    - Differences exist in **efficiency** and **speed of convergence**.
 
+Each method has its own **strengths and weaknesses**.
+#### Immediate Reinforcement Learning vs. Full Reinforcement Learning
 
+### Immediate Reinforcement Learning (Immediate RL)
 
+- **Policy Update Frequency**
+    - Updates the **policy or value function** after every action.
+    - The agent **learns and adapts in real time** as it interacts with the environment.
+- **Learning Approach**
+    - **Online Learning**: Updates are made continuously and incrementally after each interaction.
 
+### Immediate RL vs. Full RL
 
+| Feature             | Immediate RL                                | Full RL                                             |
+| ------------------- | ------------------------------------------- | --------------------------------------------------- |
+| **Reward Timing**   | Immediate rewards after each action.        | Delayed rewards, requiring long-term strategy.      |
+| **Decision Making** | Faster, as actions are evaluated instantly. | Requires profound understanding of the environment. |
+| **Example**         | Bandit Problem                              | Chess, Go, or strategic planning tasks.             |
 
+### Explore-Exploit Dilemma in Immediate RL
 
+- The agent must **explore** different actions to identify near-optimal actions.
+- Once enough exploration is done, it **exploits** the best-known action.
+- The challenge: **How much to explore before exploiting?**
 
+---
 
+## Examples of Reinforcement Learning in Real Life
 
+### Immediate RL Examples
 
+- Giving treats for homework completion.
+- Earning points in a game.
+- Receiving applause after a performance.
+- Receiving praise for completing a task.
+- Getting paid directly after work.
+- Eating immediately after feeling hungry.
+- Social media notifications.
 
+### Delayed Reinforcement Examples`
 
+- Saving money for future goals.
+- Completing a degree for career advancement.
+- Physical fitness and exercise.
+- Learning a musical instrument.
+- Learning a new language.
 
+### Suitability of Immediate RL
 
+- **Real-time applications**: Suitable where quick decision-making is needed, such as:
+    - **Tic-Tac-Toe**: The agent updates its strategy after each move.
+    - **Self-driving cars**: The control system updates the driving policy in real time.
 
+---
 
+## General Reinforcement Learning (RL
 
+- **Policy Update Frequency**
+    
+    - Updates can be made **after accumulating a batch of experiences** or **at the end of an episode**.
+- **Learning Approach**
+    
+    - **Online and Offline Learning**
+        - **Online RL**: Updates occur during interaction with the environment.
+        - **Offline RL**: The agent gathers experience first and updates the policy afterward.
 
+---
 
+## State-Action Value Function ($Q(s, a)$)
 
+- The **state-action value function** (or **Q-function**) specifies how good it is for an agent to take a particular action $a$ in a given state $s$ under a policy $\pi$.
+- Denoted as:  
+    $Q(s,a)=E[Gt∣St=s,At=a]Q(s, a) = \mathbb{E}[G_t | S_t = s, A_t = a]$
+- Represents the **expected cumulative reward** of taking action $a$ in state $s$.
 
+### **Reinforcement Learning (RL) Fundamentals**
 
+#### **Temporal Difference (TD) Learning**
 
+- A simple rule to explain complex behaviors.
+- **Intuition**: Prediction of the outcome at time t+1t+1t+1 is better than at time ttt. The later prediction is used to adjust the earlier prediction.
+- Has had a profound impact on **behavioral psychology** and **neuroscience**.
 
+---
 
+#### **Optimal Control**
 
+- A branch of **mathematical optimization**.
+- **Goal**: Design a controller that maximizes or minimizes an objective function.
+- **Key Concept**: Finding a control policy that **optimizes** the cumulative reward or **minimizes** the cost over time.
+- Deals with **dynamical systems**, determining the best sequence of actions to achieve an optimal outcome.
 
+#### **Dynamic Programming (DP) in RL**
 
+- A mathematical approach to solving optimization problems by **breaking them down into simpler subproblems**.
+- In **Markov Decision Processes (MDPs)**, DP methods help find **optimal policies** by solving **Bellman equations**.
 
+###### **Two Primary DP Methods**
 
+1. **Policy Iteration**:
+    - Alternates between **evaluating** a policy and **improving** it.
+2. **Value Iteration**:
+    - Iteratively updates the **value function** directly to find the **optimal policy**.
 
+---
+
+## **RL Strategies: On-Policy vs. Off-Policy**
+
+##### **On-Policy Learning**
+
+- The agent **learns by following its own policy**.
+- Example: Learning to play a game by **trial and error**.
+![[Pasted image 20250131132833.png]]
+##### **Off-Policy Learning**
+
+- The agent **learns from the experience of another policy**.
+- Example: Learning how to ride a bike by **watching someone else ride**.
+![[Pasted image 20250131132824.png]]
+---
+
+## **Return and Value Function**
+
+### **Return $(Gt​)$**
+
+- The **cumulative reward over time**.
+- The agent's goal is to **maximize the return**.
+
+### **Value Function $V(s)$**
+
+- The **expected value of return** for a given state.
+- Helps estimate the **long-term benefit** of being in a certain state.
 
 
 
