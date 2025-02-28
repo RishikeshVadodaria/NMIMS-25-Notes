@@ -1,0 +1,6 @@
+site_name: My Notes
+nav:
+  - Home: index.md
+  - Lecture Notes - Unit 1: Lecture Notes - Unit 1.md
+theme: 
+  name: material
